@@ -25,6 +25,8 @@ function App() {
   const [cards, setCards] = useState([]); // sets the order of the cards
   const [flippedCards, setFlippedCards] = useState([]); // will only have 0-2 in length
   const [matchedCards, setMatchedCards] = useState([]);
+  const [score, setScore] = useState(0);
+  const [moves, setMoves] = useState(0);
 
   const initializeGame = () => {
     //SHUFFLE CARDS
@@ -35,7 +37,12 @@ function App() {
       isFlipped: false,
       isMatched: false,
     }));
+    //reset the game!
     setCards(finalCards);
+    setMoves(0);
+    setScore(0);
+    setMatchedCards([]);
+    setFlippedCards([]);
   };
 
   useEffect(() => {
@@ -77,7 +84,7 @@ function App() {
               }
             })
           );
-
+          setScore((prev) => prev + 1);
           setFlippedCards([]);
         }, 500);
       } else {
@@ -96,12 +103,14 @@ function App() {
           setFlippedCards([]);
         }, 1000);
       }
+
+      setMoves((prev) => prev + 1);
     }
   };
 
   return (
     <div className="app">
-      <GameHeader score={3} moves={10} />
+      <GameHeader score={score} moves={moves} onReset={initializeGame} />
       <div className="cards-grid">
         {cards.map((card) => (
           <Card card={card} onClick={handleCardClick} />
