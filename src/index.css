@@ -1,3 +1,11 @@
+:root {
+  --primary-purple: #836deb;
+  --darker-purple: #8470ec;
+  --lighter-purple: #aaa5f7;
+  --green-accent: #33d398;
+  --orange-accent: #fbbf24;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +15,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, sans-serif;
-  background: #0a0a0a;
+  background: #efe9fa;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -33,10 +41,10 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  background: rgba(15, 23, 42, 0.9);
+  background: #fff;
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px var(--darker-purple);
   width: 100%;
   max-width: 600px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -44,7 +52,7 @@ body {
 
 .game-header h1 {
   font-size: 2.5rem;
-  color: #fff;
+  color: var(--primary-purple);
   text-align: center;
 }
 
@@ -77,7 +85,7 @@ body {
 }
 
 .reset-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #aaa5f7 0%, #8470ec 100%);
   color: white;
   border: none;
   padding: 12px 30px;
@@ -86,12 +94,12 @@ body {
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px var(--primary-purple);
 }
 
 .reset-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px var(--darker-purple);
 }
 
 .reset-btn:active {
@@ -99,12 +107,12 @@ body {
 }
 
 .win-message {
-  background: rgba(15, 23, 42, 0.95);
+  background: #fff;
   padding: 30px 50px;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px var(--orange-accent);
+  border: 1px solid #fff;
   animation: slideDown 0.5s ease-out;
 }
 
@@ -122,6 +130,7 @@ body {
 .win-message h2 {
   font-size: 2rem;
   margin-bottom: 10px;
+  color: var(--orange-accent);
 }
 
 .win-message p {
@@ -154,22 +163,26 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px var(--darker-purple);
   backface-visibility: hidden;
   transition: opacity 0.3s, transform 0.3s;
 }
 
 .card-front {
-  background: linear-gradient(to bottom, #0f172a, #0b0f1a);
+  background: linear-gradient(
+    to bottom,
+    var(--lighter-purple),
+    var(--darker-purple)
+  );
   color: white;
   font-weight: bold;
   font-size: 3rem;
   z-index: 1;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid #fff;
 }
 
 .card-back {
-  background: #1e1e1e;
+  background: #fff;
   font-size: 4rem;
   z-index: 0;
   border: 2px solid rgba(255, 255, 255, 0.1);
@@ -190,9 +203,9 @@ body {
 }
 
 .card.matched .card-back {
-  background: rgba(126, 211, 33, 0.2);
-  box-shadow: 0 0 20px rgba(126, 211, 33, 0.4);
-  border: 2px solid rgba(126, 211, 33, 0.5);
+  background: #fff;
+  box-shadow: 0 0 20px var(--green-accent);
+  border: 2px solid var(--green-accent);
 }
 
 .card:hover:not(.matched):not(.flipped) .card-front {
