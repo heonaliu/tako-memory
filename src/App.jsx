@@ -1,6 +1,7 @@
 import { GameHeader } from "./components/GameHeader";
 import { Card } from "./components/Card";
 import { useState, useEffect } from "react";
+import { WinMessage } from "./components/WinMessage";
 
 const cardValues = [
   "🌺",
@@ -29,10 +30,20 @@ function App() {
   const [moves, setMoves] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
 
+  const shuffle = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
   const initializeGame = () => {
     //SHUFFLE CARDS
+    const shuffled = shuffle(cardValues);
 
-    const finalCards = cardValues.map((value, index) => ({
+    const finalCards = shuffled.map((value, index) => ({
       id: index,
       value,
       isFlipped: false,
@@ -113,9 +124,12 @@ function App() {
     }
   };
 
+  const isGameComplete = matchedCards.length === cardValues.length;
+
   return (
     <div className="app">
       <GameHeader score={score} moves={moves} onReset={initializeGame} />
+      {isGameComplete && <WinMessage moves={moves} />}
       <div className="cards-grid">
         {cards.map((card) => (
           <Card card={card} onClick={handleCardClick} />
