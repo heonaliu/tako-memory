@@ -188,6 +188,12 @@ body {
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
+.card-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
 .card.flipped .card-front {
   opacity: 0;
   pointer-events: none;
