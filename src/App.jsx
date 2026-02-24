@@ -4,24 +4,7 @@ import { useState, useEffect } from "react";
 import { WinMessage } from "./components/WinMessage";
 import { useGameLogic } from "./hooks/useGameLogic";
 
-const cardValues = [
-  "🌺",
-  "🌻",
-  "🌹",
-  "🌱",
-  "🪻",
-  "🌸",
-  "🍄",
-  "💐",
-  "🌺",
-  "🌻",
-  "🌹",
-  "🌱",
-  "🪻",
-  "🌸",
-  "🍄",
-  "💐",
-];
+const cardValues = [];
 
 function App() {
   const {
